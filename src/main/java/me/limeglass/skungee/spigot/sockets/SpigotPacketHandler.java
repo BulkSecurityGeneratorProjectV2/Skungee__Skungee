@@ -130,7 +130,7 @@ public class SpigotPacketHandler {
 						try {
 							if (scripts.parallelStream().anyMatch(file -> file.getName().equals(entry.getKey()))) {
 								Boolean reload = false;
-								File script = File.createTempFile("Skungee", entry.getKey());
+								File script = Files.createTempFile("Skungee", entry.getKey()).toFile();
 								PrintStream out = new PrintStream(new FileOutputStream(script));
 								out.print(StringUtils.join(entry.getValue(), '\n'));
 								out.close();
